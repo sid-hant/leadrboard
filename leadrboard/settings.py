@@ -26,7 +26,7 @@ SECRET_KEY = os.environ.get("SECRET_KEY")
 DEBUG = os.environ.get("DEBUG", False)
 
 
-ALLOWED_HOSTS = ["leadrboard.herokuapp.com", ".herokuapp.com", ".heroku.com"]
+ALLOWED_HOSTS = ['*']
 #env.list('DJANGO_ALLOWED_HOSTS', default=['example.com'])
 
 # Application definition
