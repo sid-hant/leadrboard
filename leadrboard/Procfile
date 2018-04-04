@@ -1,1 +1,1 @@
-web: gunicorn --pythonpath /leadrboard/ leadrboard.wsgi
+web: gunicorn leadrboard.wsgi --log-file -
