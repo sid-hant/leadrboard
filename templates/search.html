@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block title %}LeadrBoards Search{% endblock %}
+{% block content %}
+<div class="container">
+  <form class="form" action="{% url 'account:search' %}" method="GET">
+    <div class="input-group mb-3">
+      <input name="search" type="text" class="form-control" placeholder="SEARCH FOR ROOMS" value={{request.GET.search}}>
+        <div class="input-group-append">
+          <button class="btn btn-dark"  type="submit">SEARCH</button>
+        </div>
+      </div>
+    </form>
+    <br>
+        {% if rooms %}
+          {% for room in rooms %}
+            <a href={% url 'account:user_detail' pk=room.id %} style="color:black">
+              <div class="jumbotron jumbotron-other" align="center">
+                <h1 class="label-for-user">{{room.username}}</h1>
+              </div>
+            <a>
+            <br>
+          {% endfor %}
+        {% endif %}
+</div>
+{% endblock %}

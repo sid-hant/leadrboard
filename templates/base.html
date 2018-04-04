@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'main.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Sniglet:800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
+
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand light navbar-title" href="{% url 'home' %}">LeadrBoards</a>
+        <ul class="navbar-nav navbar-right">
+          {% if user.is_authenticated %}
+            <li class="nav-item"><a href="{% url 'room:add' %}" class="nav-link">ADD</a></li>
+            <li class="nav-item"><a href="{% url 'room:manage'%}" class="nav-link">MANAGE</a></li>
+            <li class="nav-item"><a href="{% url 'account:logout' %}" class="nav-link" style="color:red">LOGOUT</a></li>
+            <li class="nav-item">
+
+              <form class="form-inline" action="{% url 'account:search' %}" method="GET">
+                <div class="input-group mb-3">
+                  <input name="search" type="text" class="form-control" placeholder="SEARCH FOR ROOMS" value={{request.GET.search}}>
+                    <div class="input-group-append">
+                      <button class="btn btn-dark" type="submit">SEARCH</button>
+                    </div>
+                  </div>
+                </form>
+            </li
+          </ul>
+
+          {% else %}
+        </ul>
+            <form method="post" action="{% url 'account:login' %}" class="form-inline">
+              {% csrf_token %}
+              <div class="form-row">
+                <div class="input-group mb-2 mr-sm-2">
+                  <input class="form-control" type="text" name="username" placeholder="Room Name">
+                </div>
+                <div class="input-group mb-2 mr-sm-2">
+                  <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+                <div class="input-group mb-2 mr-sm-2">
+                  <input type="submit" name="" value="LOGIN" class="btn btn-dark">
+                </div>
+              </div>
+            </form>
+          {% endif %}
+      </div>
+    </nav>
+    <br>
+{% block content %}
+
+{% endblock %}
+  </body>
+</html>

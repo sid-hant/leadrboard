@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}LeadrBoards: {{player.name}}{% endblock %}
+{% block content %}
+
+<div class="container">
+  <div class="jumbotron jumbotron-other" align=center>
+    <h1 class="label-for-user">{{player.name}}</h1>
+    <p>GAMES PLAYED: {{player.games_played}}</p>
+    <p>{{player.wins}}-{{player.loss}}-{{player.draw}} (W-L-D)</p>
+    <div class="row">
+      <div class="col">
+        <a href="{% url 'room:reset_player' pk=player.id%}"><button type="submit" class="btn btn-warning">RESET STATS</button></a>
+      </div>
+      <div class="col">
+        <form action="{% url 'room:delete_player' pk=player.id%}" method="POST">
+          {% csrf_token %}
+          <button class="btn btn-danger" type="submit">DELETE PLAYER</button>
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="container" align="center">
+
+
+  </div>
+</div>
+{% endblock %}

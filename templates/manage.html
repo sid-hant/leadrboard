@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}MANAGE PLAYERS{% endblock %}
+{% block content %}
+<div class="container">
+  <h4 class="labels-for-tables" align="center">ALL PLAYERS</h4>
+  {% for player in players %}
+    <div class="jumbotron jumbotron-other" align="center">
+      <a style="color:black" href="{{ player.id }}"><h1 >{{player.name}}</h1></a>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

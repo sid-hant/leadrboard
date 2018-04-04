@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load bootstrap3 %}
+{% block title %}LeadrBoards{% endblock %}
+{% block content %}
+<div class="container">
+      {% if user.is_authenticated %}
+
+      {% else %}
+      <div class="row">
+        <div class="col-8">
+          <div class="jumbotron" align="center">
+            <h1 class="header-title">LeadrBoards</h1>
+            <h3 id='search-title'>SEARCH ROOMS</h3>
+            <form class="form" action="{% url 'account:search' %}" method="GET">
+                <input name="search" class="form-control" type="search" placeholder="SEARCH FOR ROOMS" aria-label="Search" value={{request.GET.search}}>
+                <br>
+                <button class="btn btn-dark btn-lg btn-block" type="submit">SEARCH</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-4">
+      <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          {% bootstrap_form user_form %}
+        </div>
+        <div class="form-group">
+          <input type="submit" value="REGISTER" class="btn btn-dark btn-lg btn-block">
+        </div>
+      </form>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endblock %}
