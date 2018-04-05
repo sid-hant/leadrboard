@@ -1,10 +1,10 @@
 {% extends "base.html" %}
-{% block title %}ROOM: {{user.username}}{% endblock %}
+{% block title %}ROOM: {{name}}{% endblock %}
 {% load bootstrap3 %}
 {% block content %}
 <div class="container">
   <div class="jumbotron jumbotron-other" align=center>
-    <h1 class="label-for-user">{{user.username}}</h1>
+    <h1 class="label-for-user">{{name}}</h1>
   </div>
   <div class="row">
     <div class="col" align="center">
