@@ -56,4 +56,4 @@ def userDetail(request, pk):
     name = user.username
     players = Player.objects.filter(user=user)
     matches = Match.objects.filter(user=user)
-    return render(request,"user_detail.html",{'players':players, 'matches':matches, 'user':user})
+    return render(request,"user_detail.html",{'players':players, 'matches':matches, 'name':name})
