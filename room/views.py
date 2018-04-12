@@ -101,8 +101,7 @@ def Dashboard(request):
     Users = get_user_model()
     players = Player.objects.filter(user=request.user)
     matches = Match.objects.filter(user=request.user)
-    username = Users.objects.get(username=request.user)
-    user = username.username
+    user = Users.objects.get(username=request.user)
     return render(request, 'dashboard.html', {'players': players, 'matches': matches, 'user':user})
 
 class DeletePlayer(generic.DeleteView, LoginRequiredMixin):
